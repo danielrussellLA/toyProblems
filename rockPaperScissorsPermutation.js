@@ -13,21 +13,21 @@
 
 
 function rockPaperScissorsResults (rounds){
-	var results = [];
-	var rpsArray = ['r', 'p', 's'];
+  var results = [];
+  var rpsArray = ['r', 'p', 's'];
+  
+  function recurse(currentStr){
+    if(currentStr.length === rounds){
+	    results.push(currentStr);
+	      return;
+    }
 
-	function recurse(currentStr){
-		if(currentStr.length === rounds){
-			results.push(currentStr);
-			return;
-		}
+    for(var i = 0; i < rpsArray.length; i++){
+    	var currentPlay = rpsArray[i];
+    	recurse(currentStr.concat(currentPlay));
+    }
+  }
 
-		for(var i = 0; i < rpsArray.length; i++){
-			var currentPlay = rpsArray[i];
-			recurse(currentStr.concat(currentPlay));
-		}
-	}
-
-	recurse('');
-	return results;
+  recurse('');
+  return results;
 }
