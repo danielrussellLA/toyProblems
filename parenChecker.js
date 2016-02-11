@@ -1,10 +1,10 @@
-// Given a string, return true if it contains balanced parentheses () 
+// Given a string, return true if it contains balanced parentheses ()t 
 
-function isBalanced (string) {
+var isBalanced = (string) => {
   var stack = [];
-  for(var i = 0; i < string.length; i++ ){
+  for( i in string ){
     if(string[i] === '(') stack.push(string[i]);
     if(string[i] === ')') stack.pop();
   }
-  return stack.length === 0 ? true : false 
+  return stack.length === 0 ? true : false;
 }
