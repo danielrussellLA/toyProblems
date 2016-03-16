@@ -32,3 +32,5 @@ function characterFrequency (string) {
 
   return tuples;
 }
+
+console.log(characterFrequency('supercalifragilisticexpialidocious'));
