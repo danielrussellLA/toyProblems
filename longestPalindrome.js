@@ -19,3 +19,7 @@ function longestPalindrome (string) {
 
   return longest;
 }
+
+
+console.log(longestPalindrome('racecar'));
+console.log(longestPalindrome("My dad is a racecar athlete"));
