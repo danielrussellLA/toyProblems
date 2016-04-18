@@ -1,4 +1,4 @@
-function humanReadable(seconds) {
+function humanReadableTime(seconds) {
   var HH = 0;
   var MM = 0;
   var SS = 0;
