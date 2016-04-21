@@ -57,6 +57,8 @@ a.addToTail(1);
 a.addToTail(2);
 a.addToTail(3);
 
-console.log(reverse(a));
-console.log(reverse(a));
+var b = reverse(a);
+console.log(b);
+console.log(reverse(b));
+// console.log(reverse(a));
 // console.log(reverse(a));
