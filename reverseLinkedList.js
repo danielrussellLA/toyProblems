@@ -3,6 +3,11 @@ var LinkedList = function(){
   this.tail = null;
 };
 
+var Node = function(val){
+  this.val = val;
+  this.next = null;
+};
+
 LinkedList.prototype.addToTail = function(val){
   var node = new Node(val);
   if(this.head === null){
@@ -14,32 +19,44 @@ LinkedList.prototype.addToTail = function(val){
   }
 };
 
-LinkedList.prototype.reverse = function(){
+function reverse(linkedList) {
   var newLinkedList = new LinkedList();
+  var vals = [];
 
-  function recurse(node) {
-    if(node.next === null){
-      newLinkedList.head = node;
-      newLinkedList.tail = node;
+  function getVals(node){
+    if(node === null){
       return;
     }
-      recurse(node.next);
-      if (newLinkedList.head){
-        newLinkedList.addToTail(node.val);
-      }
+    vals.push(node.val);
+    getVals(node.next);
   }
-  recurse(this.head);
+  getVals(linkedList.head);
+  vals.reverse();
+
+  for(var i = 0; i < vals.length; i++){
+    newLinkedList.addToTail(vals[i]);
+  }
   return newLinkedList;
-};
-
-
-var Node = function(val){
-  this.val = val;
-  this.next = null;
-};
-
+  // function recurse(node) {
+  //   if(node.next === null){
+  //     newLinkedList.head = node;
+  //     newLinkedList.tail = node;
+  //     return;
+  //   }
+  //   recurse(node.next);
+  //   newLinkedList.addToTail(node.val);
+  // }
+  //
+  // recurse(linkedList.head);
+  // linkedList = newLinkedList;
+  // return linkedList;
+}
 
 var a = new LinkedList();
 a.addToTail(1);
 a.addToTail(2);
 a.addToTail(3);
+
+console.log(reverse(a));
+console.log(reverse(a));
+// console.log(reverse(a));
