@@ -9,22 +9,14 @@
 //     </body>
 // </html>
 
-var Tree = function(value){
-    this.value = value;
-    this.children = [];
-};
-
-Tree.prototype.addChild = function(value){
-    this.children.push(new Tree(value));
-};
-
+// create a node for a doubly linked list node (notice how it's sort of a hybrid between a tree and a doubly linked list)
 function DOMNode(tag, parent){
     this.tag = tag;
     this.parent = parent;
     this.content = '';
     this.children = [];
 }
-
+// create a function on its prototype to add a new node with either an already created DOMNode or with a tagname and a parent reference.
 DOMNode.prototype.addElement = function(node, tag, parent){
     if(tag !== undefined && parent !== undefined){
         this.children.push(new DOMNode(tag, parent));
@@ -33,6 +25,7 @@ DOMNode.prototype.addElement = function(node, tag, parent){
     }
 };
 
+// this just manually creates the tree above with these two functions above.
 var html = new DOMNode('html', null);
 var body = new DOMNode('body', html);
 var div = new DOMNode('div', body);
@@ -45,3 +38,6 @@ div.addElement(br);
 
 body.addElement(div);
 html.addElement(body);
+
+// log it out and see the dom tree.
+console.log(html);
