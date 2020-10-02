@@ -66,7 +66,7 @@ const convertThreeDigit = (arr) => {
     return result
 }
 
-stringToNum('one-million-two-hundred-thirty-two-thousand-five-hundred-forty-one')
-stringToNum('one-million-one-hundred-thousand-five-hundred-forty-one')
-stringToNum('six-million-two-hundred')
-stringToNum('two')
+console.log(stringToNum('one-million-two-hundred-thirty-two-thousand-five-hundred-forty-one'))
+console.log(stringToNum('one-million-one-hundred-thousand-five-hundred-forty-one'))
+console.log(stringToNum('six-million-two-hundred'))
+console.log(stringToNum('two'))
