@@ -1,30 +1,35 @@
 const stringToNum = str => {
-    let numParts = str.split('-')
-    let indexOfMillion = numParts.indexOf('million')
-    let indexOfThousand = numParts.indexOf('thousand')
-    let millions, thousands, hundreds;
-    if (indexOfMillion !== -1) {
-        millions = numParts.slice(0, indexOfMillion)
-    }
-    if (indexOfThousand !== -1) {
-        if (indexOfMillion) {
-            thousands = numParts.slice(indexOfMillion + 1, indexOfThousand)
-        } else {
-            thousands = numParts.slice(0, indexOfThousand)
-        }
-    }
-    if (indexOfThousand === -1 && indexOfMillion === -1) {
-        hundreds = numParts.slice(0)
-    } else if (indexOfMillion !== -1 && indexOfThousand === -1) {
-        hundreds = numParts.slice(indexOfMillion + 1)
-    } else {
-        hundreds = numParts.slice(indexOfThousand + 1)
-    }
-    let result = (convertThreeDigit(millions) * 1000000) + (convertThreeDigit(thousands) * 1000) + convertThreeDigit(hundreds)
+    let wordNums = str.split('-')
+    let [millions, thousands, hundreds] = splitIntoThree(wordNums)
+    let result = (convertToDigits(millions) * 1000000) + (convertToDigits(thousands) * 1000) + convertToDigits(hundreds)
     return result
 }
 
-const convertThreeDigit = (arr) => {
+const splitIntoThree = wordNums => {
+    let indexOfMillion = wordNums.indexOf('million')
+    let indexOfThousand = wordNums.indexOf('thousand')
+    let millions, thousands, hundreds;
+    if (indexOfMillion !== -1) {
+        millions = wordNums.slice(0, indexOfMillion)
+    }
+    if (indexOfThousand !== -1) {
+        if (indexOfMillion) {
+            thousands = wordNums.slice(indexOfMillion + 1, indexOfThousand)
+        } else {
+            thousands = wordNums.slice(0, indexOfThousand)
+        }
+    }
+    if (indexOfThousand === -1 && indexOfMillion === -1) {
+        hundreds = wordNums.slice(0)
+    } else if (indexOfMillion !== -1 && indexOfThousand === -1) {
+        hundreds = wordNums.slice(indexOfMillion + 1)
+    } else {
+        hundreds = wordNums.slice(indexOfThousand + 1)
+    }
+    return [millions, thousands, hundreds]
+}
+
+const convertToDigits = arr => {
     if (!arr) return 0
     let numsMap = {
         one: 1,
@@ -70,3 +75,4 @@ console.log(stringToNum('one-million-two-hundred-thirty-two-thousand-five-hundre
 console.log(stringToNum('one-million-one-hundred-thousand-five-hundred-forty-one'))
 console.log(stringToNum('six-million-two-hundred'))
 console.log(stringToNum('two'))
+console.log(stringToNum('one-hundred-million-five-thousand-eleven'))
