@@ -15,7 +15,6 @@ const sortNameEntries = entries => {
     })
 }
 
-
 const stringToNum = str => {
     let wordNums = str.split('-')
     let [millions, thousands, hundreds] = splitIntoThree(wordNums)
@@ -89,6 +88,7 @@ const convertToDigits = arr => {
     return result
 }
 
+// TEST CASE
 console.log(
     sortNameEntries([
         'erin one-hundred-one',
