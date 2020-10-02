@@ -1,3 +1,22 @@
+const sortNameEntries = entries => {
+    return entries.sort((a, b) => {
+        let splitA = a.split(' '),
+        splitB = b.split(' ')
+        let nameA = splitA[0]
+        nameB = splitB[0]
+        let numA = splitA[1]
+        let numB = splitB[1]
+        if (nameA === nameB) {
+            let convertedA = stringToNum(numA)
+            let convertedB = stringToNum(numB)
+            console.log(convertedA, convertedB)
+            return convertedB - convertedA
+        }
+        return nameA.localeCompare(nameB)
+    })
+}
+
+
 const stringToNum = str => {
     let wordNums = str.split('-')
     let [millions, thousands, hundreds] = splitIntoThree(wordNums)
@@ -71,8 +90,11 @@ const convertToDigits = arr => {
     return result
 }
 
-console.log(stringToNum('one-million-two-hundred-thirty-two-thousand-five-hundred-forty-one'))
-console.log(stringToNum('one-million-one-hundred-thousand-five-hundred-forty-one'))
-console.log(stringToNum('six-million-two-hundred'))
-console.log(stringToNum('two'))
-console.log(stringToNum('one-hundred-million-five-thousand-eleven'))
+console.log(
+    sortNameEntries([
+        'erin one-hundred-one',
+        'daniel two-thousand-fifteen',
+        'daniel five-million-one-hundred-thousand-two-hundred-eleven',
+        'daniel one-million-two-hundred-six'
+    ])
+)
