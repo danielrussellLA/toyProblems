@@ -9,7 +9,6 @@ const sortNameEntries = entries => {
         if (nameA === nameB) {
             let convertedA = stringToNum(numA)
             let convertedB = stringToNum(numB)
-            console.log(convertedA, convertedB)
             return convertedB - convertedA
         }
         return nameA.localeCompare(nameB)
